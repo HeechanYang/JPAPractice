@@ -20,19 +20,25 @@ public class Main {
         // 4. 트랜잭션 시작
         tx.begin();
 
-        // 5. 새로 삽입할 Member 객체 생성
-        Member member = new Member();
-        member.setId(100L);
-        member.setName("양희찬");
+        // 에러 났을 경우를 대비해 try-catch로 처리
+        try {
+            // 5. 새로 삽입할 Member 객체 생성
+            Member member = new Member();
+            member.setId(100L);
+            member.setName("양희찬");
 
-        // 6.EntityManager를 통해 생성한 Member 객체 저장
-        em.persist(member);
+            // 6.EntityManager를 통해 생성한 Member 객체 저장
+            em.persist(member);
 
-        // 7. 트랜잭션 커밋
-        tx.commit();
-
-        // 8. EntityManagerFactory 및 EntityManager 종료
-        em.close();
-        emf.close();
+            // 7. 트랜잭션 커밋
+            tx.commit();
+        } catch (Exception e) {
+            // 8. 실패하면 롤백!
+            tx.rollback();
+        } finally {
+            // 9. EntityManagerFactory 및 EntityManager 종료
+            em.close();
+            emf.close();
+        }
     }
 }

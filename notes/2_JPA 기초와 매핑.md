@@ -1,10 +1,10 @@
-# JPA 기초와 매핑
+# [2. JPA 기초와 매핑](https://www.youtube.com/watch?v=egVZusxSeKw&index=2&list=PL9mhQYIlKEhfpMVndI23RwWTL9-VL-B7U)
 
 ## H2 DB
 
 ### H2 DB란?
 
-H2 DB란 In-Memory 기반 데이터베이스의 일종.
+H2 DB란 In-Memory 기반 데이터베이스의 일종
 
 ### H2 DB 장점
 
@@ -232,7 +232,49 @@ public class Main {
 
 ![](../images/2_5_after_run.PNG)
 
-<center> [그림 3] 실행 후 </center>
+<center> [그림 3-1] 실행 후 </center>
+
+![](../images/2_6_after_run.PNG)
+
+<center> [그림 3-2] 실행 후 H2 확인 </center>
+
+![](../images/2_7_after_run_again.PNG)
+
+<center> [그림 3-3] 재실행하면 에러 발생</center>
+
+## 9. 좀 더 보완해보자
+
+트랜잭션을 처리하다가 중간에 에러가 날 수도 있다. 이런 경우 트랜잭션의 특징 중 하나인 `원자성`을 지키기 위해 롤백을 해준다.
+
+```java
+ // 에러 났을 경우를 대비해 try-catch로 처리
+try {
+    // 5. 새로 삽입할 Member 객체 생성
+    Member member = new Member();
+    member.setId(100L);
+    member.setName("양희찬");
+
+    // 6.EntityManager를 통해 생성한 Member 객체 저장
+    em.persist(member);
+
+    // 7. 트랜잭션 커밋
+    tx.commit();
+} catch (Exception e) {
+    // 8. 실패하면 롤백!
+    tx.rollback();
+} finally {
+    // 잘 처리되든 말든
+    // 9. EntityManagerFactory 및 EntityManager 종료
+    em.close();
+    emf.close();
+}
+```
+
+# 주의
+
+- EntityManagerFactory는 하나만 생성해서 애플리케이션 전체에서 공유
+- EntityManger는 쓰레드간 공유하면 안됨(사용하고 버리자)
+- JPA의 모든 데이터는 트랜잭션 안에서 실행
 
 # 더 알아보기
 
