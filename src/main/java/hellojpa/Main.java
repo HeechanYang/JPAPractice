@@ -1,11 +1,13 @@
 package hellojpa;
 
 import hellojpa.entity.Member;
+import hellojpa.entity.MemberType;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
@@ -24,8 +26,11 @@ public class Main {
         try {
             // 5. 새로 삽입할 Member 객체 생성
             Member member = new Member();
-            member.setId(100L);
+//            member.setId(100L);
             member.setName("양희찬");
+            member.setAge(26);
+            member.setRegDate(new Date());
+            member.setMemberType(MemberType.ADMIN);
 
             // 6.EntityManager를 통해 생성한 Member 객체 저장
             em.persist(member);
