@@ -1,4 +1,4 @@
-# [2. JPA 기초와 매핑](https://www.youtube.com/watch?v=egVZusxSeKw&index=2&list=PL9mhQYIlKEhfpMVndI23RwWTL9-VL-B7U)
+# [2. JPA 기초와 매핑](https://www.youtube.com/watch?v=TYO42hpPLq4&list=PL9mhQYIlKEhfpMVndI23RwWTL9-VL-B7U&index=2)
 
 ## H2 DB
 

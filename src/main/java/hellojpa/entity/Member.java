@@ -24,6 +24,12 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private MemberType memberType;
 
+//    @ManyToOne
+//    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "TEAM_ID") // Default로 되긴 하지만 웬만하면 적어주자
+    private Team team;
+
     public Long getId() {
         return id;
     }
@@ -62,5 +68,13 @@ public class Member {
 
     public void setMemberType(MemberType memberType) {
         this.memberType = memberType;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
     }
 }
