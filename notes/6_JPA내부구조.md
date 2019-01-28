@@ -1,4 +1,4 @@
-# [5. JPA 내부구조](https://www.youtube.com/watch?v=bEtTpCviSc4&list=PL9mhQYIlKEhfpMVndI23RwWTL9-VL-B7U&index=6)
+# [6. JPA 내부구조](https://www.youtube.com/watch?v=bEtTpCviSc4&list=PL9mhQYIlKEhfpMVndI23RwWTL9-VL-B7U&index=6)
 
 ![EntityManagerFactory & Entitymanager](../images/6_1_EntityManagers.PNG)
 [EntityManagerFactory & Entitymanager]
