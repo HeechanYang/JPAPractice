@@ -7,3 +7,4 @@
 - [4, 5강 - 연관관계 매핑](./notes/4_5_연관관계매핑.md)
 - [6강 - JPA 내부구조](./notes/6_JPA내부구조.md)
 - [7강 - JPA 객체지향쿼리](./notes/7_JPA객체지향쿼리.md)
+- [8강 - Spring Data JPA와 QueryDSL 이해](./notes/8_SpringDataJPA와QueryDSL이해.md)
