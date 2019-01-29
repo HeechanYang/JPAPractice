@@ -68,7 +68,53 @@ String list(Pageable pageable, Model model) { }
 ![](../images/8_5_query_dsl.PNG)
 ![](../images/8_6_query_dsl_2.PNG)
 
+## 예시
+
+```java
+JPAQueryFactory query = new JPAQueryFactory(em);
+QMember m = QMember.member;
+
+query.selectFrom(m)
+    .where(m.age.gt(18).and(m.name.contains("희찬")))
+    .orderBy(m.name.desc())
+    // 페이징도 됨!
+    .offset(10)
+    .limit(10)
+    //.join(m.team, t) // 조인도 됨!
+    //.orderBy(m.namee.desc()) // 오타를 컴파일타임 때 잡아줌!
+    .fetch();
+```
+
+## 동적쿼리 예시
+
+```java
+String name = "member";
+int age = 9;
+
+QMember m = QMember.member;
+
+BooleanBuilder builder = new BooleanBuilder();
+
+if(name != null){
+    builder.and(m.name.contains(name));
+}
+if(age != 0){
+    builder.and(m.age.gt(age));
+}
+
+List<Member> list = query.selectFrom(m)
+                        .where(builder)
+                        .fetch();
+```
+
 # 더 알아보자
 
 - @PostConstructor?
   - Spring 뜰 때 실행?
+- 우아한 형제들 팀 서버 기술 스택
+  - Java 8
+  - Spring Framework
+  - JPA, Hibernate
+  - Spring Data JPA
+  - QueryDSL
+  - JUnit, Spock(Test)

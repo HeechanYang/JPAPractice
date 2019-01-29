@@ -57,6 +57,7 @@ public class Main {
 
             // 8. 트랜잭션 커밋
             tx.commit();
+
         } catch (Exception e) {
             // 9. 실패하면 롤백!
             System.out.println(e);
